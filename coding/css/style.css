@@ -1,32 +1,61 @@
-@charset "utf-8";
+@charset 'utf-8';
+
+@import url("https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+
+:root {
+  font-size: 62.5%; /* fz62.5p: 루트에 들어오는 글자 크기는 10px -> 1rem */
+  --main-color: #3189ff;
+  --main-color-dark: #1f62b8;
+  --main-color-light: rgba(255, 255, 255, 0.1);
+
+  --title-color: #222;
+  --text-color: #555;
+  --black20p: rgba(0, 0, 0, 0.2);
+  --black30p: rgba(0, 0, 0, 0.3);
+  --black40p: rgba(0, 0, 0, 0.4);
+  --black50p: rgba(0, 0, 0, 0.5);
+  --black60p: rgba(0, 0, 0, 0.6);
+  --black70p: rgba(0, 0, 0, 0.7);
+  --black80p: rgba(0, 0, 0, 0.8);
+  --black20p: rgba(0, 0, 0, 0.9);
+  --white20p: rgba(255, 255, 255, 0.2);
+  --white30p: rgba(255, 255, 255, 0.3);
+  --white40p: rgba(255, 255, 255, 0.4);
+  --white50p: rgba(255, 255, 255, 0.5);
+  --white60p: rgba(255, 255, 255, 0.6);
+  --white70p: rgba(255, 255, 255, 0.7);
+  --white80p: rgba(255, 255, 255, 0.8);
+  --white90p: rgba(255, 255, 255, 0.9);
+}
 
 /* main design */
 #main > section {
   padding: 6rem 0;
-  border: 1px solid #000;
+  /* border: 1px solid #000; */
 }
 
-/* css 개별성 규칙 
-id로 정의한 이름 사용(#): 100점
-class로 정의한 이름 사용: 10점
-태그로 정의한 이름 사용 : 1점
-!important: 개별성 규칙 무력화
-예: #portfolio .warks-list .item h4 + p {} --> 122점
-
-점수가 높은 명령어를 우선 순위한다 */
+/* 
+css 개별성 규칙 
+- id로 정의한 이름 사용(#) : 100점
+- class로 정의한 이름 사용 : 10점
+- 태그로 정의한 이름 사용 : 1점
+예: #portfolio .works-list .item h4 + p {} --> 122점
+*/
 
 .visual {
   background: skyblue;
   height: 46rem;
-  padding: 0 !important; /* !important: 개별성 규칙 무력화 */
+  padding: 0 !important; /* 개별성 규칙 무력화 */
   position: relative;
+  overflow: hidden;
 }
 
 .visual::before {
   content: "";
   display: block;
   height: 100%;
-  background: url(https://cdn.dkilbo.com/news/photo/202411/471073_351935_5415.jpg)
+  background: url(https://i.namu.wiki/i/02Nd3r5_9XyQO8S9LMYQoVTCnsWO-NqYQf3N_PJYZmuxYOhJj5s9n9H66lozbQ9xB0zYl3GGRT3yzWiyVlTnWw.webp)
     no-repeat 0 0 / cover;
 
   position: absolute;
@@ -37,6 +66,18 @@ class로 정의한 이름 사용: 10점
   left: 0;
 
   width: 100%;
+  animation: visual-ani 1s;
+}
+
+.visual::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: var(--black70p);
+  width: 100%;
+  height: 100%;
 }
 
 .visual .inner {
@@ -49,4 +90,177 @@ class로 정의한 이름 사용: 10점
   top: 50%;
   left: 0;
   transform: translateY(-50%); /* trfty */
+  z-index: 5;
+  width: 69rem;
+}
+
+.visual-title h2 {
+  /* fw700+fz4.8r+lh1.2+c#fff */
+  font-weight: 700;
+  font-size: 4.8rem;
+  line-height: 1.2;
+  color: #fff;
+  text-transform: uppercase; /* ttu */
+  animation: slide-right 0.5s 1s both;
+  /* both: 0%에 해당하는 css 정의를 적용하고 움직임 / 100% 애니메이션이 움직이고 나서 css 적용*/
+}
+
+.visual-title h2 strong {
+  color: var(--main-color);
+}
+
+.visual-title p {
+  font-weight: 500;
+  font-size: 2rem;
+  color: #fff;
+  margin-top: 2.4rem; /* mt2.4r */
+  animation: slide-right 0.5s 1.3s both;
+}
+.visual-title a.cta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20rem;
+  height: 4.8rem;
+  background: var(--main-color);
+  color: #fff;
+  font-weight: 700;
+  margin-top: 3.2rem; /* mt3.2r */
+  animation: slide-right 0.5s 1.5s both;
+}
+
+@keyframes visual-ani {
+  /* 0%=from */
+  0% {
+    opacity: 0; /* op0 */
+    transform: scale(1.5); /* trf */
+  }
+
+  /* 100%=to */
+  100% {
+    opacity: 1; /* op1 */
+  }
+}
+
+@keyframes slide-right {
+  from {
+    transform: translateX(-50px); /* trftx */
+  }
+}
+
+.business-list {
+  display: flex;
+  gap: 2rem;
+}
+
+.business-list li {
+  width: 28rem;
+  min-height: 3.2rem;
+  padding: 2.8rem 3.2rem;
+  border: 1px solid var(--black20p);
+  box-shadow: 0.8px 0 rgba(0, 0, 0, 0.05); /* bxsh */
+}
+.business-list li dl dt {
+  font-weight: 700;
+  font-size: 2rem;
+  color: var(--main-color-dark);
+  line-height: 1.3;
+}
+
+.business-list li dl dt + dt {
+  margin-top: 2rem;
+}
+
+.business-list li dl dd {
+  font-weight: 500;
+}
+
+.sec-title {
+  font-weight: 500;
+  font-size: 3.2rem;
+  color: var(--main-color);
+}
+
+.sec-title + p {
+  font-weight: 500;
+  font-size: 2rem;
+  margin-top: 0.4rem;
+}
+
+.works-list {
+  margin-top: 2.8rem;
+  display: flex;
+  flex-wrap: wrap; /* fxww: flex 공간에 flex-wrap: wrap을 넣어 필요한 만큼에 공간만 적용을 함.*/
+}
+
+.works-list li {
+  width: 59rem;
+  height: 26rem;
+  position: relative; /* 글씨가 보임. */
+}
+
+.works-list li p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-weight: 500;
+  font-size: 2.4rem;
+  text-align: center;
+}
+
+.works-list li p strong {
+  font-weight: 700;
+  display: block;
+}
+
+.news-con {
+  display: flex;
+  justify-content: space-between; /* jcsb */
+}
+
+.news-text {
+  /* border: 1px solid #000; */
+  width: 48rem;
+}
+
+.news-text h4 {
+  font-weight: 700;
+  font-size: 2.4rem;
+  color: var(--title-color);
+  margin-top: 1.8rem;
+}
+
+.news-text p {
+  margin-top: 1.8rem;
+}
+
+.news-text figure {
+  width: 64rem;
+}
+
+.column h4 {
+  font-weight: 500;
+  font-size: 2.8rem;
+  color: var(--main-color);
+}
+.column h5 {
+  font-weight: 700;
+  font-size: 3.2rem;
+  color: var(--title-color);
+  margin-top: 1.8rem;
+}
+
+.column p {
+  margin-top: 1.8rem;
+}
+
+.column p + p {
+  text-align: right;
+}
+
+.column p + p strong {
+  display: block;
+  font-weight: 700;
 }

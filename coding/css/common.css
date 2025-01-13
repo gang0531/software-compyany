@@ -7,7 +7,7 @@
   font-size: 62.5%; /* fz62.5p: 루트에 들어오는 글자 크기는 10px -> 1rem */
   --main-color: #3189ff;
   --main-color-dark: #1f62b8;
-  --main-color-light: rgba(255, 255, 255, 0.1);
+  --main-color-light: rgba(49, 137, 255, 0.3);
 
   --title-color: #222;
   --text-color: #555;
@@ -31,6 +31,7 @@
 
 ::selection {
   background: var(--main-color-dark);
+  color: var(--main-color-dark);
 }
 
 a {
@@ -50,7 +51,7 @@ hr,
   width: 1px;
   height: 1px;
   overflow: hidden;
-  clip: rect(--main-color-light);
+  clip: rect(0, 0, 0, 0);
 }
 
 body {
@@ -78,7 +79,7 @@ body {
   align-items: center;
 }
 
-.logo {
+.logo a {
   display: block; /* 크기를 가진 블록이여야만 이 전에 준 크기가 들어간다. */
   width: 16.4rem;
   height: 3.2rem;
@@ -117,12 +118,14 @@ body {
 .foot-logo {
   width: 16.4rem;
   height: 3.2rem;
-  background: url(../img/foot-logo.svg);
+  background: url(../img/foot-logo.svg) no-repeat 0 0 / contain;
 }
 .foot-text {
   font-weight: 700;
   font-size: 1.4rem;
+  line-height: 1.5;
 }
 
 .foot-text p + p {
+  margin-top: 0.8rem;
 }
